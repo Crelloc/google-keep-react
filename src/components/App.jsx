@@ -1,30 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import axios from "axios";
 
 function App() {
-  const [notes, setNotes] = useState([
-    {
-      title: "Lorem ipsum",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus sit amet est placerat in egestas erat imperdiet. Diam sollicitudin tempor id eu nisl nunc. Placerat orci nulla pellentesque dignissim enim sit amet venenatis. Gravida arcu ac tortor dignissim."
-    }
-  ]);
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+	axios
+	    .get('/api/notes')
+	    .then(response => {
+		setNotes(response.data);
+	    });
+  }, []); // useEffect with '()' and '[]' parameters: initial call to backend once. 
 
   function addNote(newNote) {
-    setNotes(prevNotes => {
-      return [...prevNotes, newNote];
-    });
+	axios
+          .post('/api/notes', newNote)
+          .then(response => {
+    		setNotes(prevNotes => {
+      			return [...prevNotes, response.data];
+    		});
+          });
   }
 
   function deleteNote(id) {
-    setNotes(prevNotes => {
-      return prevNotes.filter((noteItem, index) => {
-        return index !== id;
-      });
-    });
+    axios
+	  .delete(`/api/notes/${id}`)
+	  .then(response => {
+	  	axios
+          		.get('/api/notes')
+          		.then(response => {
+          			setNotes(response.data);
+			});
+
+	  });
   }
 
   return (
