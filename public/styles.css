@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=McLaren|Montserrat&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -7,6 +9,7 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 body {
+  font-family: "Montserrat", sans-serif;
   background: #eed;
   background-image: url("./crisp-paper-ruffles.png");
   padding: 0 16px;
