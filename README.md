@@ -2,8 +2,8 @@
 Mock design of google keep.
 React App created with CodeSandbox.
 
-# Demo:
-https://3ydvg.csb.app/
+# React App Demo:
+https://8o3yh.csb.app/
 
 # CodeSandbox Link:
-https://codesandbox.io/s/github/Crelloc/google-keep-react
+https://codesandbox.io/s/using-pre-built-react-components-8o3yh
