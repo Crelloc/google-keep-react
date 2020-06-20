@@ -47,7 +47,8 @@ function App() {
         return (
           <Note
             key={index}
-            id={index}
+            id={noteItem.id}
+	    date={noteItem.date.toLocaleString('en-US', {hour12: false})}
             title={noteItem.title}
             content={noteItem.content}
             onDelete={deleteNote}
