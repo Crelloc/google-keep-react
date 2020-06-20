@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const {readFileSync} = require('fs');
 const url      = process.env.MONGODB_ATLAS_URI;
 const options  = {
 	//https://docs.mongodb.com/manual/reference/connection-string/#connection-string-options 
@@ -8,10 +7,6 @@ const options  = {
 	useFindAndModify: false,
 	w: "majority",
 	retryWrites: true,
-//	ssl: true,
-//	authMechanism: "MONGODB-X509",
-//	authSource: "$external",
-//	tlsCertificateKeyFile: readFileSync(process.env.MONGODB_X509_PATH)
 };
 
 console.log('connection to', url);
@@ -21,7 +16,6 @@ mongoose.connect(url, options)
   	})
   	.catch((error) => {
 		console.error(error);
-    		console.log('error connecting to MongoDB:', error.message);
   	});
 
 const noteSchema = new mongoose.Schema({
