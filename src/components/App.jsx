@@ -9,16 +9,12 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
-	axios
-	    .get('/api/notes')
-	    .then(response => {
-		setNotes(response.data);
-	    });
+	axios.get('/api/notes')
+	    .then(response => setNotes(response.data));
   }, []); // useEffect with '()' and '[]' parameters: initial call to backend once. 
 
   function addNote(newNote) {
-	axios
-          .post('/api/notes', newNote)
+	axios.post('/api/notes', newNote)
           .then(response => {
     		setNotes(prevNotes => {
       			return [...prevNotes, response.data];
@@ -27,16 +23,9 @@ function App() {
   }
 
   function deleteNote(id) {
-    axios
-	  .delete(`/api/notes/${id}`)
-	  .then(response => {
-	  	axios
-          		.get('/api/notes')
-          		.then(response => {
-          			setNotes(response.data);
-			});
-
-	  });
+    axios.delete(`/api/notes/${id}`)
+	  .then(response => axios.get('/api/notes'))
+          .then(response => setNotes(response.data));
   }
 
   return (
