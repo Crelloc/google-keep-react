@@ -36,6 +36,8 @@ if (!isDev && cluster.isMaster) {
 		title: title,
 		content: content
 	};
+	console.log(request.body);
+
 	Note.findByIdAndUpdate(request.params.id, note, {new: true})
 	  .then(updatedNote => {
 	  	response.json(updatedNote);

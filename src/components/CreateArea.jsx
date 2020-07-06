@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import { Fab, Zoom } from "@material-ui/core/";
 
-function CreateArea(props) {
-  const [note, setNote] = useState({
-    title: "",
-    content: ""
-  });
-  const [initClick, setInitClick] = useState(false);
 
-  function handleChange(event) {
+function CreateArea(props) {
+
+  console.log("createArea Rendered!");
+  const [note, setNote] = useState( props.data ? props.data
+                                        : {title: "", content: ""}
+                                  );
+
+function handleChange(event) {
     const { name, value } = event.target;
 
     setNote(prevNote => {
@@ -21,26 +22,17 @@ function CreateArea(props) {
   }
 
   function submitNote(event) {
-    JSON.stringify(note) !==
-      JSON.stringify({
-        title: "",
-        content: ""
-      }) && props.onAdd(note);
-    setNote({
-      title: "",
-      content: ""
-    });
+    props.onAdd(note);
+    setNote({title: "", content: ""});
     event.preventDefault();
   }
 
-  function expand() {
-    setInitClick(true);
-  }
-
   return (
-    <div>
-      <form className="create-note">
-        {initClick && (
+
+
+    <div className="form-container">
+      <form id={props.formId} className="create-note" >
+        {(props.expand) && (
           <input
             name="title"
             onChange={handleChange}
@@ -53,18 +45,18 @@ function CreateArea(props) {
           onChange={handleChange}
           value={note.content}
           placeholder="Take a note..."
-          rows={initClick ? 3 : 1}
-          onClick={expand}
+          rows={ props.expand ? 3 : 1}
         />
-        {initClick ? (
+        {props.expand ? (
           <Zoom in={true}>
             <Fab onClick={submitNote}>
               <AddIcon />
             </Fab>
           </Zoom>
         ) : null}
+
       </form>
-    </div>
+      </div>
   );
 }
 
