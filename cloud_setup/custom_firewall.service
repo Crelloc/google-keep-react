@@ -1,0 +1,8 @@
+[Unit]
+After=network.service
+
+[Service]
+ExecStart=/etc/firewallsetup/firewall
+
+[Install]
+WantedBy=default.target
