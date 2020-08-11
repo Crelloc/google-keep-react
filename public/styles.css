@@ -83,7 +83,7 @@ footer p {
 form.create-note {
   position: relative;
   width: 480px;
-  margin: 30px 2px 20px 2px;
+  margin: 30px 10px 20px;
   background: #fff;
   padding: 15px;
   border-radius: 7px;
