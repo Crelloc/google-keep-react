@@ -18,8 +18,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "docker-build": "docker build -t keeper:12.18-lts .",
-    "docker-run": "docker run -d -p 3000:5000 -p 27017:27017 --name keeper keeper:12.18-lts",
+    "docker-build": "docker build -t keeper:node-latest .",
+    "docker-run-dev": "docker run -d -p 3000:5000 -p 27017:27017 --name keeper keeper:node-latest",
+    "docker-run-production": "docker run -d -p 80:5000 -p 27017:27017 --name keeper keeper:node-latest",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
