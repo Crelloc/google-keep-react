@@ -8,5 +8,4 @@ ADD  . ./
 RUN npm run-script build
 WORKDIR ./backend
 RUN npm install
-CMD node app.js
-
+CMD NODE_ENV=production node app.js
