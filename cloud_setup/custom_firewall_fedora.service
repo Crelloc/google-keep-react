@@ -1,0 +1,12 @@
+[Unit]
+Requires=NetworkManager.service
+#After=NetworkManager.service
+#Wants=NetworkManager.service
+Before=network-pre.target
+Wants=network-pre.target
+Conflicts=firewalld.service
+[Service]
+ExecStart=/etc/firewallsetup/firewall-reload
+
+[Install]
+WantedBy=multi-user.target
