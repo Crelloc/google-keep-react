@@ -4,7 +4,7 @@ Wants=network-pre.target docker.service
 Conflicts=ufw.service docker.service
 
 [Service]
-ExecStart=/etc/firewallsetup/firewall-reload
+ExecStart=/etc/firewallsetup/firewall
 
 [Install]
 WantedBy=multi-user.target
