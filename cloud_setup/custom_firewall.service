@@ -1,8 +1,11 @@
 [Unit]
-After=network.service
+Before=network-pre.target docker.service
+Wants=network-pre.target docker.service
+Conflicts=ufw.service docker.service
 
 [Service]
-ExecStart=/etc/firewallsetup/firewall
+ExecStart=/etc/firewallsetup/firewall-reload
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
+
