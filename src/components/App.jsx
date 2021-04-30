@@ -9,7 +9,6 @@ import { Grow, Zoom } from "@material-ui/core";
 import styles from "./App.modules.css";
 
 function App() {
-  console.log("App Component Rendered!");
   const [notes, setNotes] = useState([]);
   const [expand, setExpand] = useState(false);
   const [modal, setModal] = useState(false);
@@ -44,11 +43,11 @@ function App() {
   }
 
   function handleMouseUp(e) {
-    console.log("%c mouseup even app.jsx", "color: red;", e);
+    // console.log("%c mouseup even app.jsx", "color: red;", e);
     var container = document.getElementById("i-form");
 
     container.contains(e.target) ? setExpand(true) : setExpand(false);
-    console.log(e.target);
+    // console.log(e.target);
   }
 
   function editData(data) {

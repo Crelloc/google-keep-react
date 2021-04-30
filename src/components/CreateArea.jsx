@@ -2,37 +2,32 @@ import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import { Fab, Zoom } from "@material-ui/core/";
 
-
 function CreateArea(props) {
+  const [note, setNote] = useState(
+    props.data ? props.data : { title: "", content: "" }
+  );
 
-  console.log("createArea Rendered!");
-  const [note, setNote] = useState( props.data ? props.data
-                                        : {title: "", content: ""}
-                                  );
-
-function handleChange(event) {
+  function handleChange(event) {
     const { name, value } = event.target;
 
-    setNote(prevNote => {
+    setNote((prevNote) => {
       return {
         ...prevNote,
-        [name]: value
+        [name]: value,
       };
     });
   }
 
   function submitNote(event) {
     props.onAdd(note);
-    setNote({title: "", content: ""});
+    setNote({ title: "", content: "" });
     event.preventDefault();
   }
 
   return (
-
-
     <div className="form-container">
-      <form id={props.formId} className="create-note" >
-        {(props.expand) && (
+      <form id={props.formId} className="create-note">
+        {props.expand && (
           <input
             name="title"
             onChange={handleChange}
@@ -45,7 +40,7 @@ function handleChange(event) {
           onChange={handleChange}
           value={note.content}
           placeholder="Take a note..."
-          rows={ props.expand ? 3 : 1}
+          rows={props.expand ? 3 : 1}
         />
         {props.expand ? (
           <Zoom in={true}>
@@ -54,9 +49,8 @@ function handleChange(event) {
             </Fab>
           </Zoom>
         ) : null}
-
       </form>
-      </div>
+    </div>
   );
 }
 
