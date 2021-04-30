@@ -1,0 +1,16 @@
+version: '3'
+services:
+  backend:
+    build: ./
+    ports:
+      - 5000:5000
+      - 27017:27017
+    restart: unless-stopped
+  nginx:
+    build: ./nginx
+    container_name: nginx-keeper
+    #  depends_on:
+    # - backend
+    ports:
+      - 80:80
+    restart: unless-stopped

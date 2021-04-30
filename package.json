@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "INLINE_RUNTIME_CHUNK=false react-scripts build",
     "docker-build": "docker build -t keeper:node-latest .",
     "docker-run-dev": "docker run -d -p 3000:5000 -p 27017:27017 --name keeper keeper:node-latest",
     "docker-run-production": "docker run -d -p 80:5000 -p 27017:27017 --name keeper keeper:node-latest",
