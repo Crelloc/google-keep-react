@@ -6,7 +6,8 @@ Developed with Docker, React, Nodejs, Mongo and hosted on Amazon EC2
 
 # Fullstack Demo:
 aws server no longer up. See "react app demo or Codesandbox link" below
-//http://ec2-13-57-30-186.us-west-1.compute.amazonaws.com/
+
+http://ec2-13-57-30-186.us-west-1.compute.amazonaws.com/
 
 # React App Demo:
 https://8o3yh.csb.app/
