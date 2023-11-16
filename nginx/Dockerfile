@@ -8,8 +8,11 @@ RUN rm /etc/nginx/conf.d/*
 # *.conf files in conf.d/ dir get included in main config
 COPY ./nginx.config /etc/nginx/conf.d/default.conf
 
-# Expose the listening port
+
+# Expose the listening ports
 EXPOSE 80
+
+EXPOSE 8080
 
 # Launch NGINX
 CMD [ "nginx", "-g", "daemon off;" ]

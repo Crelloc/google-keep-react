@@ -20,8 +20,9 @@
     "start": "react-scripts start",
     "build": "INLINE_RUNTIME_CHUNK=false IMAGE_INLINE_SIZE_LIMIT=0 react-scripts build",
     "docker-build": "docker build -t keeper:node-latest .",
-    "docker-run-dev": "docker run -d -p 3000:5000 -p 27017:27017 --name keeper keeper:node-latest",
-    "docker-run-production": "docker run -d -p 80:5000 -p 27017:27017 --name keeper keeper:node-latest",
+    "docker-run-dev": "docker run -d -p 5000:5000 --name keeper keeper:node-latest",
+    "docker-run-production": "docker run -d -p 80:5000 --name keeper keeper:node-latest",
+    "docker-run-mongo": "docker run -d -p 27017:27017 --name mongodb mongo:node-latest",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

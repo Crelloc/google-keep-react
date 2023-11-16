@@ -1,16 +1,41 @@
 version: '3'
+
 services:
   backend:
     build: ./
     ports:
       - 5000:5000
-      - 27017:27017
     restart: unless-stopped
+    environment:
+      MONGODB_ATLAS_URI: mongodb://mongodb:27017/notesDB
+      NODE_ENV: production
+    depends_on:
+      - mongodb
+    networks:
+      - my-network
+  
   nginx:
     build: ./nginx
-    container_name: nginx-keeper
-    #  depends_on:
-    # - backend
     ports:
       - 80:80
+      - 8080:8080
     restart: unless-stopped
+    networks:
+      - my-network
+  
+  mongodb:
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - db:/data/db
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  db:
