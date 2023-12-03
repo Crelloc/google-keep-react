@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #better docker processing formatting
-echo 'export FORMAT="ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"' >> /home/$USER/.bashrc
-echo 'alias dps="docker ps -a --format=$FORMAT"' >> /home/$USER/.bashrc
-source .bashrc
+echo "export FORMAT=\"ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n\"" >> /home/$USER/.bashrc
+echo "alias dps='docker ps -a --format=\$FORMAT'" >> /home/$USER/.bashrc
+source ~/.bashrc
 
 ## Build docker image from Dockerfile located in current directory
 #docker build -t keeper:node-latest .
