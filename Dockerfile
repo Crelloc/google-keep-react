@@ -11,8 +11,6 @@ ENV PATH="./node_modules/.bin:$PATH"
 
 COPY . ./
 
-EXPOSE 5000
-
 RUN npm run build
 
 WORKDIR ./backend

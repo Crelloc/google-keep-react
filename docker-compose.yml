@@ -3,8 +3,6 @@ version: '3'
 services:
   backend:
     build: ./
-    ports:
-      - 5000:5000
     restart: unless-stopped
     environment:
       MONGODB_ATLAS_URI: mongodb://mongodb:27017/notesDB
@@ -26,8 +24,6 @@ services:
   mongodb:
     image: mongo
     restart: unless-stopped
-    ports:
-      - 27017:27017
     volumes:
       - db:/data/db
     networks:
