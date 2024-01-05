@@ -6,10 +6,10 @@ services:
     restart: unless-stopped
     environment:
       NODE_ENV: production
-    depends_on:
-      - mongodb
     networks:
       - my-network
+    env_file:
+      - ./backend/.env
   
   nginx:
     build: ./nginx
@@ -17,14 +17,6 @@ services:
       - 80:80
       - 8080:8080
     restart: unless-stopped
-    networks:
-      - my-network
-  
-  mongodb:
-    image: mongo
-    restart: unless-stopped
-    volumes:
-      - db:/data/db
     networks:
       - my-network
 

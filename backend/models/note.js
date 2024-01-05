@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const url      = process.env.MONGODB_ATLAS_URI;
+const url      = process.env.MONGODB_ATLAS_URI || 'mongodb://mongodb:27017/notesDB';
 const options  = {
 	//https://docs.mongodb.com/manual/reference/connection-string/#connection-string-options 
 	useNewUrlParser: true,
