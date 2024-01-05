@@ -1,9 +1,14 @@
 # google-keep-react
-Mock design of google keep.
+Mock design of google keep: https://keep.google.com
+
+Features: add notes, delete notes, update notes
 
 Developed with Docker, NGINX, React, Nodejs (express), Mongo
 
 NGINX is used as a reverse proxy to the nodejs server, where nodejs serves a reactjs app.
+
+To just view react app demo go here:
+[Demo](#react-app-demo)
 
 # Getting started
 
