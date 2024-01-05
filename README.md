@@ -1,13 +1,53 @@
 # google-keep-react
 Mock design of google keep.
-React App created with CodeSandbox.
 
-Developed with Docker, React, Nodejs, Mongo and hosted on Amazon EC2
+Developed with Docker, NGINX, React, Nodejs (express), Mongo
 
-# Fullstack Demo:
-aws server no longer up. See "react app demo or Codesandbox link" below
+NGINX is used as a reverse proxy to the nodejs server, where nodejs serves a reactjs app.
 
-http://ec2-13-57-30-186.us-west-1.compute.amazonaws.com/
+# Getting started
+
+```bash
+git clone https://github.com/Crelloc/google-keep-react.git && cd google-keep-react
+```
+
+# To run locally using docker-compose
+Prerequisites:
+- Docker server: https://docs.docker.com/engine/install/#server
+- Docker Compose: https://docs.docker.com/compose/install/linux/#install-the-plugin-manually
+
+To build and run:
+
+```bash
+docker-compose up -d
+```
+
+If using an external mongo database like mongo atlas or have mongo installed elsewhere then
+set the environment variable 'MONGODB_ATLAS_URI' in ./backend/.env to the mongodb url.
+
+You will need to create the .env file in ./backend directory.
+
+```bash
+touch ./backend/.env
+```
+
+and edit the file:
+
+```.env
+MONGODB_ATLAS_URI="mongodb_url"
+```
+
+By default the mongodb url is: mongodb://mongodb:27017/notesDB
+
+Then run:
+
+```bash
+docker-compose -f external-db.yml up -d
+```
+
+## To interact with the app
+Access the app through your browser at http://localhost or http://localhost:8080 if port 80 is not enabled on your router.
+
 
 # React App Demo:
 https://8o3yh.csb.app/
